@@ -317,17 +317,17 @@ const AdminDashboard = () => {
   return (
     <div className="admin-container">
       <div className="admin-header">
-      <h2>Admin Dashboard</h2>
+        <h2>Admin Dashboard</h2>
         <div className="admin-controls">
-      <input
-        type="text"
-            placeholder="Search by name, mobile, or village..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        className="search-input"
-      />
-          <select 
-            value={filter} 
+          <input
+            type="text"
+            placeholder="Search by name, mobile, or village"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="search-input"
+          />
+          <select
+            value={filter}
             onChange={(e) => setFilter(e.target.value)}
             className="filter-select"
           >
@@ -335,15 +335,15 @@ const AdminDashboard = () => {
             <option value="pending">Pending</option>
             <option value="completed">Completed</option>
           </select>
-          <select 
-            value={sortBy} 
+          <select
+            value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
             className="sort-select"
           >
             <option value="date">Sort by Date</option>
-            <option value="total">Sort by Amount</option>
+            <option value="total">Sort by Total</option>
           </select>
-          <button 
+          <button
             onClick={() => setSortOrder(sortOrder === 'desc' ? 'asc' : 'desc')}
             className="sort-btn"
           >
@@ -369,73 +369,77 @@ const AdminDashboard = () => {
         </div>
         <div className="stat-card">
           <h3>Total Revenue</h3>
-          <p>₹{stats.totalRevenue.toLocaleString()}</p>
+          <p>₹{stats.totalRevenue}</p>
         </div>
       </div>
 
       <div className="orders-table-container">
-      <table className="dashboard-table">
-        <thead>
-          <tr>
+        <table className="dashboard-table">
+          <thead>
+            <tr>
               <th>Date</th>
-              <th>Customer</th>
-              <th>Contact</th>
-            <th>Total</th>
-            <th>Status</th>
-              <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+              <th>Customer Details</th>
+              <th>Contact & Amount</th>
+              <th>Status & Actions</th>
+            </tr>
+          </thead>
+          <tbody>
             {filteredOrders.map((order) => (
               <tr key={order._id} className={order.status === 'completed' ? 'completed' : ''}>
-                <td>{new Date(order.date).toLocaleDateString('en-GB', {
-                  day: '2-digit',
-                  month: '2-digit',
-                  year: 'numeric'
-                })}</td>
+                <td>
+                  {new Date(order.date).toLocaleDateString('en-GB', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                  })}
+                </td>
                 <td>
                   <div className="customer-info">
                     <span className="customer-name">{order.name}</span>
                     <span className="customer-village">{order.village}</span>
                   </div>
                 </td>
-              <td>{order.mobile}</td>
-                <td>₹{Number(order.totalBill).toLocaleString()}</td>
                 <td>
-                  <span className={`status-badge ${order.status}`}>
-                    {order.status}
-                  </span>
-                </td>
-                <td>
-                  <div className="action-buttons">
-                    {order.status !== 'completed' && (
-                      <button
-                        className="status-btn"
-                        onClick={() => handleStatusUpdate(order._id, 'completed')}
-                      >
-                        Mark as Complete
-                      </button>
-                    )}
-                    <button
-                      className="view-btn"
-                      onClick={() => setSelectedOrder(order)}
-                    >
-                      View
-                    </button>
-                    {order.status === 'pending' && (
-                      <button
-                        className="view-btn"
-                        onClick={() => openEditModal(order)}
-                      >
-                        Edit
-                      </button>
-                    )}
+                  <div className="contact-amount-info">
+                    <div className="mobile-number">{order.mobile}</div>
+                    <div className="total-amount">₹{Number(order.totalBill).toLocaleString()}</div>
                   </div>
                 </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                <td>
+                  <div className="status-actions-container">
+                    <span className={`status-badge ${order.status}`}>
+                      {order.status}
+                    </span>
+                    <div className="action-buttons">
+                      {order.status !== 'completed' && (
+                        <button
+                          className="status-btn"
+                          onClick={() => handleStatusUpdate(order._id, 'completed')}
+                        >
+                          Mark as Complete
+                        </button>
+                      )}
+                      <button
+                        className="view-btn"
+                        onClick={() => setSelectedOrder(order)}
+                      >
+                        View
+                      </button>
+                      {order.status === 'pending' && (
+                        <button
+                          className="view-btn"
+                          onClick={() => openEditModal(order)}
+                        >
+                          Edit
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
       {selectedOrder && (
