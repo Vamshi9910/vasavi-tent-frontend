@@ -1,0 +1,227 @@
+.form-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2.5rem 1.5rem;
+  background: #fff8f0;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(122, 47, 47, 0.10), 0 1.5px 6px rgba(176, 141, 87, 0.07);
+  transition: box-shadow 0.3s;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 2px solid #e6cfa7;
+}
+
+.vasavi-logo {
+  width: 80px;
+  max-width: 30vw;
+  height: auto;
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 600px) {
+  .vasavi-logo {
+    width: 56px;
+    max-width: 50vw;
+  }
+}
+
+.form-header h2 {
+  color: #7a2f2f;
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+  font-family: 'Georgia', serif;
+}
+
+.address {
+  color: #b08d57;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+.form-section {
+  margin-bottom: 2.2rem;
+  padding: 1.7rem 1.2rem;
+  background: #f9f6f2;
+  border-radius: 14px;
+  border: 1.5px solid #e6cfa7;
+  box-shadow: 0 2px 8px rgba(176, 141, 87, 0.06);
+  transition: box-shadow 0.2s;
+}
+
+.form-section h3 {
+  color: #7a2f2f;
+  margin-bottom: 1.2rem;
+  font-size: 1.25rem;
+  font-family: 'Georgia', serif;
+  letter-spacing: 1px;
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  font-weight: 600;
+  color: #7a2f2f;
+  margin-bottom: 0.2rem;
+}
+
+.input-group input,
+.input-group select {
+  padding: 0.85rem;
+  border: 1.5px solid #e6cfa7;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background: #fff;
+  color: #7a2f2f;
+  font-family: inherit;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  border-color: #b08d57;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(176, 141, 87, 0.18);
+}
+
+.input-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237a2f2f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(122, 47, 47, 0.06);
+}
+
+.product-table th,
+.product-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e6cfa7;
+}
+
+.product-table th {
+  background: #f9f6f2;
+  font-weight: 700;
+  color: #7a2f2f;
+  letter-spacing: 1px;
+}
+
+.product-table input {
+  width: 120px;
+  padding: 0.5rem;
+  border: 1px solid #e6cfa7;
+  border-radius: 4px;
+  color: #7a2f2f;
+  background: #fff8f0;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.product-table input:focus {
+  border-color: #b08d57;
+  box-shadow: 0 0 0 2px rgba(176, 141, 87, 0.13);
+}
+
+.total-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.2rem;
+}
+
+.submit-btn {
+  padding: 1rem 2.2rem;
+  background: #7a2f2f;
+  color: #fff8f0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(.4,2,.3,1);
+  box-shadow: 0 2px 8px rgba(122, 47, 47, 0.08);
+  letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+  background: #b08d57;
+  color: #fff;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 16px rgba(176, 141, 87, 0.13);
+}
+
+.submit-btn:disabled {
+  background: #e6cfa7;
+  color: #fff;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.success-message {
+  background: #b08d57;
+  color: #fff8f0;
+  border: 1.5px solid #e6cfa7;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 500;
+  box-shadow: 0 1px 4px rgba(176, 141, 87, 0.10);
+}
+
+@media (max-width: 900px) {
+  .form-container {
+    padding: 1rem;
+  }
+  .form-section {
+    padding: 1rem 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+  .input-row {
+    grid-template-columns: 1fr;
+  }
+  .form-header h2 {
+    font-size: 1.3rem;
+  }
+  .form-section h3 {
+    font-size: 1.05rem;
+  }
+  .product-table th, .product-table td {
+    padding: 0.5rem;
+  }
+} 
