@@ -315,21 +315,23 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="admin-container">
-      <div className="admin-header">
-        <h2>Admin Dashboard</h2>
-        <div className="admin-controls">
+    <div className="admin-container" style={{ fontFamily: 'Inter, Segoe UI, Arial, sans-serif', background: '#f7f6f3', minHeight: '100vh' }}>
+      <div className="admin-header" style={{ background: '#fff', padding: '24px 20px 10px 20px', borderBottom: '1px solid #f0e9e0', textAlign: 'left' }}>
+        <h2 style={{ color: '#7a2f2f', fontSize: '2rem', fontWeight: 700, margin: '0 0 10px 0', letterSpacing: '1px' }}>Admin Dashboard</h2>
+        <div className="admin-controls" style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '0 20px 10px 20px' }}>
           <input
             type="text"
             placeholder="Search by name, mobile, or village"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="search-input"
+            style={{ padding: '10px 14px', border: '1px solid #e7d7c1', borderRadius: '8px', background: '#f9f6ef', fontSize: '1rem', color: '#7a2f2f', outline: 'none', transition: 'border 0.2s' }}
           />
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
             className="filter-select"
+            style={{ padding: '10px 14px', border: '1px solid #e7d7c1', borderRadius: '8px', background: '#f9f6ef', fontSize: '1rem', color: '#7a2f2f', outline: 'none', transition: 'border 0.2s' }}
           >
             <option value="all">All Orders</option>
             <option value="pending">Pending</option>
@@ -339,6 +341,7 @@ const AdminDashboard = () => {
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
             className="sort-select"
+            style={{ padding: '10px 14px', border: '1px solid #e7d7c1', borderRadius: '8px', background: '#f9f6ef', fontSize: '1rem', color: '#7a2f2f', outline: 'none', transition: 'border 0.2s' }}
           >
             <option value="date">Sort by Date</option>
             <option value="total">Sort by Total</option>
@@ -346,6 +349,7 @@ const AdminDashboard = () => {
           <button
             onClick={() => setSortOrder(sortOrder === 'desc' ? 'asc' : 'desc')}
             className="sort-btn"
+            style={{ background: '#e7d7c1', color: '#7a2f2f', border: '1px solid #b08d57', borderRadius: '8px', padding: '8px 14px', fontSize: '1rem', cursor: 'pointer', transition: 'background 0.2s, color 0.2s' }}
           >
             {sortOrder === 'desc' ? '↓' : '↑'}
           </button>
@@ -354,22 +358,33 @@ const AdminDashboard = () => {
 
       {error && <div className="error-message">{error}</div>}
 
-      <div className="stats-container">
-        <div className="stat-card">
-          <h3>Total Orders</h3>
-          <p>{stats.total}</p>
+      <div
+        className="stats-container"
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '16px',
+          flexWrap: 'wrap',
+          maxWidth: '600px',
+          margin: '24px auto'
+        }}
+      >
+        <div className="stat-card" style={{ background: '#fff', borderRadius: '10px', boxShadow: '0 1px 4px rgba(176, 141, 87, 0.07)', border: '1px solid #f3e7d1', padding: '12px 8px', minWidth: '120px', flex: '1 1 120px', textAlign: 'center', margin: 0,marginRight: '20px' }}>
+          <h3 style={{ color: '#b08d57', fontSize: '0.95rem', marginBottom: '4px', fontWeight: 600 }}>Total Orders</h3>
+          <p style={{ fontSize: '1.1rem', fontWeight: 700, color: '#7a2f2f', margin: 0 }}>{stats.total}</p>
         </div>
-        <div className="stat-card">
-          <h3>Pending Orders</h3>
-          <p>{stats.pending}</p>
+        <div className="stat-card" style={{ background: '#fff', borderRadius: '10px', boxShadow: '0 1px 4px rgba(176, 141, 87, 0.07)', border: '1px solid #f3e7d1', padding: '12px 8px', minWidth: '120px', flex: '1 1 120px', textAlign: 'center', margin: 0 }}>
+          <h3 style={{ color: '#b08d57', fontSize: '0.95rem', marginBottom: '4px', fontWeight: 600 }}>Pending Orders</h3>
+          <p style={{ fontSize: '1.1rem', fontWeight: 700, color: '#7a2f2f', margin: 0 }}>{stats.pending}</p>
         </div>
-        <div className="stat-card">
-          <h3>Completed Orders</h3>
-          <p>{stats.completed}</p>
+        <div className="stat-card" style={{ background: '#fff', borderRadius: '10px', boxShadow: '0 1px 4px rgba(176, 141, 87, 0.07)', border: '1px solid #f3e7d1', padding: '12px 8px', minWidth: '120px', flex: '1 1 120px', textAlign: 'center', margin: 0 }}>
+          <h3 style={{ color: '#b08d57', fontSize: '0.95rem', marginBottom: '4px', fontWeight: 600 }}>Completed Orders</h3>
+          <p style={{ fontSize: '1.1rem', fontWeight: 700, color: '#7a2f2f', margin: 0 }}>{stats.completed}</p>
         </div>
-        <div className="stat-card">
-          <h3>Total Revenue</h3>
-          <p>₹{stats.totalRevenue}</p>
+        <div className="stat-card" style={{ background: '#fff', borderRadius: '10px', boxShadow: '0 1px 4px rgba(176, 141, 87, 0.07)', border: '1px solid #f3e7d1', padding: '12px 8px', minWidth: '120px', flex: '1 1 120px', textAlign: 'center', margin: 0 }}>
+          <h3 style={{ color: '#b08d57', fontSize: '0.95rem', marginBottom: '4px', fontWeight: 600 }}>Total Revenue</h3>
+          <p style={{ fontSize: '1.1rem', fontWeight: 700, color: '#7a2f2f', margin: 0 }}>₹{stats.totalRevenue}</p>
         </div>
       </div>
 
@@ -440,6 +455,52 @@ const AdminDashboard = () => {
             ))}
           </tbody>
         </table>
+
+        <div className="mobile-orders-container">
+          {filteredOrders.map((order) => (
+            <div key={order._id} className={`mobile-order-card ${order.status === 'completed' ? 'completed' : ''}`} style={{ background: '#fff', borderRadius: '10px', boxShadow: '0 1px 4px rgba(176, 141, 87, 0.07)', border: '1px solid #f3e7d1', marginBottom: '10px', padding: '10px 6px', width: '100%', boxSizing: 'border-box', marginRight: '8px' }}>
+              <div className="mobile-order-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '6px' }}>
+                <span className="mobile-order-date" style={{ background: '#f9f6ef', padding: '3px 8px', borderRadius: '10px', fontSize: '0.85rem', color: '#7a2f2f', fontWeight: 600 }}>{new Date(order.date).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}</span>
+                <span className={`mobile-status-badge ${order.status}`} style={{ background: order.status === 'pending' ? '#fff3e0' : '#e8f5e9', color: order.status === 'pending' ? '#e65100' : '#2e7d32', borderRadius: '10px', padding: '3px 8px', fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase' }}>{order.status}</span>
+              </div>
+              <div className="mobile-customer-info" style={{ marginBottom: '4px' }}>
+                <div className="mobile-customer-name" style={{ fontSize: '1rem', fontWeight: 700, color: '#7a2f2f' }}>{order.name}</div>
+                <div className="mobile-customer-village" style={{ fontSize: '0.85rem', color: '#b08d57' }}>{order.village}</div>
+              </div>
+              <div className="mobile-contact-info" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px', padding: '4px 0', borderTop: '1px solid #f3e7d1', borderBottom: '1px solid #f3e7d1' }}>
+                <span className="mobile-phone" style={{ fontSize: '0.85rem', color: '#7a2f2f', fontWeight: 500 }}>{order.mobile}</span>
+                <span className="mobile-amount" style={{ fontSize: '1rem', fontWeight: 700, color: '#b08d57' }}>₹{Number(order.totalBill).toLocaleString()}</span>
+              </div>
+              <div className="mobile-actions" style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                <button
+                  className="mobile-btn primary"
+                  style={{ flex: 1, minWidth: '60px', padding: '5px 7px', border: 'none', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer', textAlign: 'center', background: '#e7d7c1', color: '#7a2f2f', border: '1px solid #b08d57', transition: 'background 0.2s, color 0.2s' }}
+                  onClick={() => setSelectedOrder(order)}
+                >
+                  View Details
+                </button>
+                {order.status !== 'completed' && (
+                  <button
+                    className="mobile-btn success"
+                    style={{ flex: 1, minWidth: '60px', padding: '5px 7px', border: 'none', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer', textAlign: 'center', background: '#e8f5e9', color: '#2e7d32', border: '1px solid #b8e6c1', transition: 'background 0.2s, color 0.2s' }}
+                    onClick={() => handleStatusUpdate(order._id, 'completed')}
+                  >
+                    Mark Complete
+                  </button>
+                )}
+                {order.status === 'pending' && (
+                  <button
+                    className="mobile-btn secondary"
+                    style={{ flex: 1, minWidth: '60px', padding: '5px 7px', border: 'none', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer', textAlign: 'center', background: '#f9f6ef', color: '#7a2f2f', border: '1px solid #e7d7c1', transition: 'background 0.2s, color 0.2s' }}
+                    onClick={() => openEditModal(order)}
+                  >
+                    Edit Order
+                  </button>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {selectedOrder && (
